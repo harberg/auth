@@ -18,6 +18,7 @@ app.use(passport.initialize());
 require('/lib/passport')(passport);
 
 require('./routes/noteRoutes')(app, passport);
+require('./routes/userRoutes')(app, passport);
 mongoose.connect('mongodb://localhost/notes-development');
 
 var server = http.createServer(app);
