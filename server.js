@@ -15,7 +15,7 @@ app.use(bodyparser.json());
 app.use(express.static( __dirname + '/dist'));
 app.use(passport.initialize());
 
-require('/lib/passport')(passport);
+require('./lib/passport')(passport);
 
 require('./routes/noteRoutes')(app, passport);
 require('./routes/userRoutes')(app, passport);
