@@ -8,7 +8,9 @@
     "mongoose": "^3.8",
     "passport": "*",
     "passport-http": "*",
-    "bcrypt": "latest"
+    "bcrypt": "latest",
+    "jwt-simple": "*",
+    "moment": "*"
   },
   "devDependencies": {
     "browserify": "^4.1.3",
