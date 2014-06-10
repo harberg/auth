@@ -10,6 +10,8 @@ var passport = require('passport');
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('secret', process.env.SECRET || 'changeme-changeme-changeme');
+app.set('apiBase', '/api/v1');
+app.set('jwtTokenSecret', process.env.JWT_SECRET || 'changeThisYo');
 
 app.use(bodyparser.json());
 app.use(express.static( __dirname + '/dist'));

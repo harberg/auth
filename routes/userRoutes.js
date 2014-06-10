@@ -1,7 +1,7 @@
 var User = require('../models/User');
 
 module.exports = function(app, passport) {
-    app.post('/api.v1/users', function(req, res) {
+    app.post('/api/v1/users', function(req, res) {
         User.findOne({'basic.email': req.body.email}, function(err,user) {
             if(err) {
                 res.send(500, err);
@@ -19,14 +19,16 @@ module.exports = function(app, passport) {
                 if(err) {
                     return res.send(500, err);
                 }
-                res.send(resNewUser);
+                // WAS res.send(resNewUser);
+                res.json({'jwt_token': resNewUser.createToken(app)});
             });// end newUser.save
         });// end User.findOne
     });// end app.post
     app.get('/api/v1/users',
         passport.authenticate('basic', {session: false}),
         function(req, res) {
-            res.json(req.user);
+            // WAS res.json(req.user);
+            res.json({'jwt_token': req.user.createToken(app)});
         }
     );// end app.get
 }// end module.exports
